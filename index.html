@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STEEL FORM | اتصالات فولادی</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== هدر ===== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <img src="img/logo.png" alt="STEEL FORM" class="logo-img">
+        <span class="logo-text">
+          <span class="logo-title">STEEL FORM</span>
+          <span class="logo-sub">INDUSTRIAL SOLUTIONS</span>
+        </span>
+      </a>
+
+      <nav class="main-nav">
+        <a href="#" class="active">صفحه اصلی</a>
+        <a href="#">محصولات</a>
+        <a href="#">درباره ما</a>
+        <a href="#">خدمات</a>
+        <a href="#">تماس با ما</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="search-box">
+          <input type="text" placeholder="جستجو در محصولات ...">
+          <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
+            <line x1="16.5" y1="16.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <a href="#" class="btn-phone">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/>
+          </svg>
+          تماس با ما
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== هیرو ===== -->
+  <section class="hero">
+    <img src="img/hero.jpg" alt="" class="hero-img" aria-hidden="true">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">اتصالات فولادی</h1>
+      <p class="hero-sub"><span>نماد اعتماد و کیفیت</span></p>
+      <p class="hero-text">انتخاب حرفه‌ای برای پروژه‌های بزرگ صنعتی</p>
+      <a href="#" class="btn-outline">
+        مشاهده محصولات
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== دسته‌بندی‌ها (توسط JS ساخته می‌شود) ===== -->
+  <section class="categories" id="categories"></section>
+
+  <!-- ===== زیرمنو (توسط JS ساخته می‌شود) ===== -->
+  <nav class="sub-nav" id="subNav"></nav>
+
+  <!-- ===== جدول قیمت + ستون ویژگی‌ها ===== -->
+  <section class="main-grid">
+
+    <div class="price-panel">
+      <div class="panel-head">
+        <button class="btn-download" id="downloadBtn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          دانلود جدول قیمت
+        </button>
+        <h2 class="panel-title">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V14M10 20V8M16 20V11M22 20H2" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          <span id="panelTitle"></span>
+        </h2>
+      </div>
+
+      <div class="tabs" id="tabs"></div>
+
+      <div class="table-wrap">
+        <table class="price-table">
+          <thead><tr id="priceHead"></tr></thead>
+          <tbody id="priceBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <aside class="feature-panel">
+      <div class="feature">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6l8-3z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.5 12l2.5 2.5 4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>تضمین کیفیت</h3>
+        <p>با استانداردهای بین‌المللی</p>
+      </div>
+      <div class="feature">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6h12v9H2zM14 10h4l3 3v2h-7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="6" cy="17" r="2" fill="currentColor"/><circle cx="17" cy="17" r="2" fill="currentColor"/></svg>
+        <h3>ارسال سریع</h3>
+        <p>به سراسر کشور</p>
+      </div>
+      <div class="feature">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="13" width="4" height="6" rx="1.5" fill="currentColor"/><rect x="17" y="13" width="4" height="6" rx="1.5" fill="currentColor"/></svg>
+        <h3>مشاوره تخصصی</h3>
+        <p>پیش از خرید و انتخاب</p>
+      </div>
+    </aside>
+
+  </section>
+
+  <!-- ===== بنر مشاوره ===== -->
+  <section class="consult-banner">
+    <img src="img/refinery.jpg" alt="" class="consult-img" aria-hidden="true">
+    <div class="consult-overlay"></div>
+    <div class="consult-content">
+      <h2>انتخاب حرفه‌ای، برای پروژه‌های حرفه‌ای</h2>
+      <p>STEEL FORM با تکیه بر تجربه و تخصص، بهترین راهکارهای صنعتی برای پروژه‌های بزرگ را ارائه می‌دهد.</p>
+      <a href="#" class="btn-outline">
+        درخواست مشاوره
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== اخبار ===== -->
+  <section class="news">
+    <h2 class="section-title">اخبار و مقالات</h2>
+    <div class="news-grid">
+      <article class="news-card">
+        <img src="img/news-1.jpg" alt="" class="news-img">
+        <div class="news-body">
+          <span class="news-date">۱۴۰۶/۰۵/۱۷</span>
+          <h3>راهنمای انتخاب لوله مناسب برای پروژه‌های صنعتی</h3>
+          <a href="#" class="news-link">مطالعه بیشتر</a>
+        </div>
+      </article>
+      <article class="news-card">
+        <img src="img/news-2.jpg" alt="" class="news-img">
+        <div class="news-body">
+          <span class="news-date">۱۴۰۶/۰۷/۱۸</span>
+          <h3>نکات مهم در نگهداری اتصالات فولادی</h3>
+          <a href="#" class="news-link">مطالعه بیشتر</a>
+        </div>
+      </article>
+      <article class="news-card">
+        <img src="img/news-3.jpg" alt="" class="news-img">
+        <div class="news-body">
+          <span class="news-date">۱۴۰۶/۰۷/۱۵</span>
+          <h3>معرفی انواع فلنج و کاربردهای آن</h3>
+          <a href="#" class="news-link">مطالعه بیشتر</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== فوتر ===== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="img/footer-logo.png" alt="STEEL FORM" class="footer-logo-img">
+          <span class="logo-text">
+            <span class="logo-title">STEEL FORM</span>
+            <span class="logo-sub">INDUSTRIAL SOLUTIONS</span>
+          </span>
+        </div>
+        <p>تولید و تامین انواع لوله، اتصالات و تجهیزات صنعتی با بالاترین کیفیت و استانداردهای جهانی.</p>
+        <div class="socials">
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="Telegram">✈</a>
+          <a href="#" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>دسترسی سریع</h4>
+        <a href="#">صفحه اصلی</a>
+        <a href="#">محصولات</a>
+        <a href="#">درباره ما</a>
+        <a href="#">تماس با ما</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>خدمات ما</h4>
+        <a href="#">مشاوره فنی</a>
+        <a href="#">ارسال سریع</a>
+        <a href="#">ضمانت کیفیت</a>
+        <a href="#">پشتیبانی حرفه‌ای</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>تماس با ما</h4>
+        <p>تهران، خیابان صنعتی، پلاک ۱۳۲</p>
+        <p>021-1234 5678</p>
+        <p>info@steelform.ir</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2025 STEEL FORM. All Rights Reserved.</span>
+      <span class="legal">
+        <a href="#">قوانین و مقررات</a>
+        <span class="sep">|</span>
+        <a href="#">حریم خصوصی</a>
+      </span>
+    </div>
+  </footer>
+
+  <!-- داده و منطق: ترتیب مهم است -->
+  <script src="data/catalog.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
