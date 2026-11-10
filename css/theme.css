@@ -1,5 +1,5 @@
 /* =========================================================
-   css/theme.css — دکمه تم + تم روشن (الهام‌گرفته از پالت اتوپلازا)
+   css/theme.css — دکمه تم + تم تیره (آبی-شب) + تم روشن (الهام‌گرفته از پالت اتوپلازا)
    بعد از style.css لود می‌شود و فقط وقتی <html data-theme="light"> باشد اثر می‌گذارد.
    پالت پلازا:
      terracotta  #DE6444  (رنگ اصلی)      → پر کردن‌ها و بوردرها
@@ -54,7 +54,230 @@
 /* =========================================================
    تم روشن
    ========================================================= */
-:root[data-theme="dark"]  { color-scheme: dark; }
+/* =========================================================
+   تم تیره (طراحی جدید): آبی-شبِ نرم به‌جای مشکی
+   - زمینه صفحه و سطوح در چند لایه‌ی روشن‌تر روی هم (تفکیک عمق)
+   - هر بخش یک رنگ مشخص: هدر آبی فولادی، تب‌ها فیروزه‌ای،
+     زیرمنوی فعال کهربایی، کارت‌های دسته‌بندی هرکدام یک رنگ
+   - متن اصلی #E6ECF7 (نه سفید خالص) برای راحتی چشم در محیط تاریک
+   ========================================================= */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --dark: #202A40;                      /* زمینه صفحه */
+  --text: #E6ECF7;
+  --text-muted: #A9B6CF;
+  --border: #3A4968;
+  --orange: #F2A65A;                    /* کهربایی نرم (تأکید اصلی) */
+  --orange-bright: #FFC083;
+  --orange-soft: rgba(242, 166, 90, 0.30);
+  --orange-glow: rgba(242, 166, 90, 0.16);
+}
+
+/* ---------- هدر: آبی فولادی ---------- */
+:root[data-theme="dark"] .site-header {
+  background: linear-gradient(180deg, #2F5185 0%, #27446F 100%);
+  border-bottom: 2px solid var(--orange);
+  box-shadow: 0 6px 20px rgba(10, 16, 32, 0.35);
+}
+:root[data-theme="dark"] .logo-title {
+  background-image: linear-gradient(180deg, #FFFFFF, #C9D6EE);
+}
+:root[data-theme="dark"] .site-header .logo-sub { color: var(--orange-bright); }
+
+:root[data-theme="dark"] .search-box input {
+  background: #1D3254;
+  border: 1px solid #4C6CA3;
+}
+:root[data-theme="dark"] .search-box input::placeholder { color: #9FB3D6; }
+:root[data-theme="dark"] .search-icon { color: #C9D6EE; }
+:root[data-theme="dark"] .btn-phone { background: rgba(242, 166, 90, 0.14); }
+
+:root[data-theme="dark"] .theme-toggle { background: rgba(242, 166, 90, 0.14); }
+:root[data-theme="dark"] .theme-toggle:hover {
+  color: #20150A;
+  box-shadow: 0 0 16px var(--orange-soft);
+}
+
+/* ---------- هیرو: لایه آبی به‌جای مشکی ---------- */
+:root[data-theme="dark"] .hero {
+  background: #1E2A44;
+  border-bottom: 1px solid #3A4968;
+}
+:root[data-theme="dark"] .hero-overlay {
+  background: linear-gradient(90deg,
+    rgba(26, 40, 70, 0.15) 0%,
+    rgba(26, 40, 70, 0.60) 55%,
+    rgba(26, 40, 70, 0.92) 100%);
+}
+:root[data-theme="dark"] .hero-title {
+  background-image: linear-gradient(180deg, #FFFFFF, #C9D6EE);
+}
+
+/* ---------- دسته‌بندی‌ها: هر کارت یک رنگ ---------- */
+:root[data-theme="dark"] .cat-card {
+  --c: #4FC3B5;
+  background: linear-gradient(180deg, #34425F, #2A3650);
+  border: 1px solid #4A5C84;
+  border-top: 3px solid var(--c);
+  color: var(--text);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 8px 18px rgba(10, 16, 32, 0.32);
+}
+:root[data-theme="dark"] .cat-card:nth-child(1) { --c: #4FC3B5; }  /* فیروزه‌ای */
+:root[data-theme="dark"] .cat-card:nth-child(2) { --c: #F2A65A; }  /* کهربایی */
+:root[data-theme="dark"] .cat-card:nth-child(3) { --c: #F08A7A; }  /* مرجانی */
+:root[data-theme="dark"] .cat-card:nth-child(4) { --c: #9B8CF0; }  /* بنفش */
+:root[data-theme="dark"] .cat-card:nth-child(5) { --c: #5FB0F5; }  /* آبی آسمانی */
+:root[data-theme="dark"] .cat-card:nth-child(6) { --c: #8FD27A; }  /* سبز */
+:root[data-theme="dark"] .cat-card:nth-child(7) { --c: #E58AC4; }  /* صورتی */
+
+:root[data-theme="dark"] .cat-card:hover {
+  border-color: var(--c);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 28%, transparent), 0 10px 22px rgba(10, 16, 32, 0.4);
+}
+:root[data-theme="dark"] .cat-card.active {
+  border: 1.5px solid var(--c);
+  border-top-width: 3px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--c) 30%, #34425F), #2A3650);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 35%, transparent), 0 10px 22px rgba(10, 16, 32, 0.4);
+}
+/* پس‌زمینه تیره‌ی عکس‌ها با رنگ کارت یکی می‌شود */
+:root[data-theme="dark"] .cat-img { border-radius: 8px; overflow: hidden; }
+:root[data-theme="dark"] .cat-img img { mix-blend-mode: lighten; }
+
+/* ---------- زیرمنو ---------- */
+:root[data-theme="dark"] .sub-nav {
+  background: #1F2840;
+  border: 1px solid #3A4968;
+  box-shadow: inset 0 2px 10px rgba(10, 16, 32, 0.35);
+}
+:root[data-theme="dark"] .sub-nav .sub-item {
+  background: linear-gradient(180deg, #3C4A6C, #313E5E);
+  border: 1px solid #566895;
+  color: var(--text);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), 0 3px 8px rgba(10, 16, 32, 0.30);
+}
+:root[data-theme="dark"] .sub-nav .sub-item::before { background: #8FA3C9; }
+:root[data-theme="dark"] .sub-nav .sub-item:hover {
+  background: linear-gradient(180deg, #4A5B84, #3B4A6E);
+  border-color: var(--orange-bright);
+  color: #fff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 5px 14px rgba(10, 16, 32, 0.35);
+}
+:root[data-theme="dark"] .sub-nav .sub-item:hover::before {
+  background: var(--orange-bright);
+  box-shadow: 0 0 8px var(--orange-soft);
+}
+:root[data-theme="dark"] .sub-nav .sub-item.active {
+  background: linear-gradient(180deg, #F5B36B, #E8954A);
+  border-color: #F7C48B;
+  color: #20150A;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 4px 14px rgba(242, 166, 90, 0.28);
+}
+:root[data-theme="dark"] .sub-nav .sub-item.active::before {
+  background: #5A3414;
+  box-shadow: none;
+}
+
+/* ---------- پنل جدول ---------- */
+:root[data-theme="dark"] .price-panel {
+  background: linear-gradient(180deg, #2A3652, #232E47);
+  border: 1px solid #3F4F74;
+  box-shadow: 0 10px 28px rgba(10, 16, 32, 0.35);
+}
+:root[data-theme="dark"] .tabs {
+  background: #1F2940;
+  border-color: #3F4F74;
+}
+:root[data-theme="dark"] .tab {
+  background: #2E3B58;
+  color: #B7C3DB;
+}
+:root[data-theme="dark"] .tab:hover {
+  background: #3A4A6C;
+  color: #fff;
+}
+:root[data-theme="dark"] .tab.active {
+  background: linear-gradient(180deg, #5CCFC1, #38A99B);
+  color: #0E2421;
+  box-shadow: inset 0 -2px 8px rgba(0, 0, 0, 0.15), 0 0 14px rgba(79, 195, 181, 0.30);
+}
+
+:root[data-theme="dark"] .table-wrap { border-color: #3F4F74; }
+:root[data-theme="dark"] .price-table thead th {
+  background: rgba(52, 86, 128, 0.92);
+  color: #CFE6FF;
+  border-bottom: 1px solid rgba(143, 200, 255, 0.45);
+  box-shadow: 0 4px 12px rgba(10, 16, 32, 0.35);
+  text-shadow: none;
+}
+:root[data-theme="dark"] .price-table td {
+  color: var(--text);
+  border-bottom: 1px solid #384868;
+}
+:root[data-theme="dark"] .price-table tbody tr:nth-child(odd)  { background: #28334E; }
+:root[data-theme="dark"] .price-table tbody tr:nth-child(even) { background: #2F3C5A; }
+:root[data-theme="dark"] .price-table tbody tr:hover {
+  background: #3B5A7A;
+  box-shadow: none;
+}
+:root[data-theme="dark"] .price-table td.price {
+  color: #FFD28F;
+  font-weight: 700;
+}
+
+/* ---------- پنل ویژگی‌ها: هر آیکون یک رنگ ---------- */
+:root[data-theme="dark"] .feature-panel {
+  background: linear-gradient(180deg, #2A3652, #232E47);
+  border: 1px solid #3F4F74;
+  box-shadow: 0 8px 22px rgba(10, 16, 32, 0.30);
+}
+:root[data-theme="dark"] .feature { border-left-color: #3F4F74; }
+:root[data-theme="dark"] .feature:hover { background: rgba(255, 255, 255, 0.04); }
+:root[data-theme="dark"] .feature svg { filter: none; }
+:root[data-theme="dark"] .feature:nth-child(1) svg { color: #4FC3B5; }
+:root[data-theme="dark"] .feature:nth-child(2) svg { color: #F2A65A; }
+:root[data-theme="dark"] .feature:nth-child(3) svg { color: #F08A7A; }
+
+@media (max-width: 1000px) {
+  :root[data-theme="dark"] .feature { border-bottom-color: #3F4F74; }
+}
+
+/* ---------- بنر مشاوره ---------- */
+:root[data-theme="dark"] .consult-banner {
+  background: #1F2744;
+  border-top: 1px solid #4A5C8A;
+  border-bottom: 1px solid #4A5C8A;
+}
+:root[data-theme="dark"] .consult-overlay {
+  background: linear-gradient(90deg,
+    rgba(28, 36, 70, 0.96) 25%,
+    rgba(28, 36, 70, 0.50) 70%,
+    rgba(28, 36, 70, 0.30) 100%);
+}
+
+/* ---------- اخبار ---------- */
+:root[data-theme="dark"] .section-title::before,
+:root[data-theme="dark"] .section-title::after {
+  background: linear-gradient(90deg, transparent, #5A6C96, transparent);
+}
+:root[data-theme="dark"] .news-card {
+  background: linear-gradient(180deg, #2D3A57, #263149);
+  border: 1px solid #3F4F74;
+}
+:root[data-theme="dark"] .news-card:hover {
+  border-color: var(--orange);
+  box-shadow: 0 10px 22px rgba(10, 16, 32, 0.38), 0 0 0 3px var(--orange-glow);
+}
+:root[data-theme="dark"] .news-date { color: #6FD3C6; }
+
+/* ---------- فوتر ---------- */
+:root[data-theme="dark"] .site-footer {
+  background: linear-gradient(180deg, #1C2744, #151D35);
+  border-top: 2px solid var(--orange);
+}
+:root[data-theme="dark"] .socials a { border-color: #4A5C84; }
+:root[data-theme="dark"] .footer-bottom { border-top-color: #2F3C5E; }
 
 :root[data-theme="light"] {
   color-scheme: light;
