@@ -102,12 +102,15 @@
       return;
     }
 
-    el.head.innerHTML = sub.columns
+    // 👇 تعیین ستون‌ها: اولویت با ستون‌های تب، در غیر این صورت ستون‌های زیرشاخه
+    const columns = tab.columns || sub.columns;
+
+    el.head.innerHTML = columns
       .map((c) => `<th>${escapeHtml(c.label)}</th>`)
       .join("");
 
     if (!tab.rows.length) {
-      el.body.innerHTML = `<tr><td class="empty-cell" colspan="${sub.columns.length}">به زودی</td></tr>`;
+      el.body.innerHTML = `<tr><td class="empty-cell" colspan="${columns.length}">به زودی</td></tr>`;
       return;
     }
 
@@ -115,7 +118,7 @@
       .map(
         (row) => `
         <tr>
-          ${sub.columns
+          ${columns
             .map(
               (col, i) =>
                 `<td class="${col.key === "price" ? "price" : ""}">${escapeHtml(formatValue(col, row[i]))}</td>`
@@ -160,10 +163,12 @@
     const tab = currentTab();
     if (!sub || !tab || !tab.rows.length) return;
 
+    const columns = tab.columns || sub.columns; // 👈 اصلاح این خط
+
     const cell = (v) => `"${String(v).replace(/"/g, '""')}"`;
-    const lines = [sub.columns.map((c) => cell(c.label)).join(",")];
+    const lines = [columns.map((c) => cell(c.label)).join(",")];
     tab.rows.forEach((row) =>
-      lines.push(sub.columns.map((c, i) => cell(row[i])).join(","))
+      lines.push(columns.map((c, i) => cell(row[i])).join(","))
     );
 
     // BOM برای نمایش درست فارسی در Excel

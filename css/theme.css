@@ -1,0 +1,369 @@
+/* =========================================================
+   css/theme.css — دکمه تم + تم روشن (الهام‌گرفته از پالت اتوپلازا)
+   بعد از style.css لود می‌شود و فقط وقتی <html data-theme="light"> باشد اثر می‌گذارد.
+   پالت پلازا:
+     terracotta  #DE6444  (رنگ اصلی)      → پر کردن‌ها و بوردرها
+     terracotta-deep #B8482A / #A9411F    → متن و دکمه‌های پرشده (کنتراست مناسب)
+     sand        #E3D9C4  (پس‌زمینه صفحه)
+     cream       #F7F3EA / #EFE8D8 (سطوح)
+     brown       #3B2218 / #2E1B13 (بنر مشاوره و فوتر)
+     ink         #2B1D17  (متن)
+   ========================================================= */
+
+/* ---------- دکمه تم (هر دو تم) ---------- */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1.5px solid var(--orange);
+  border-radius: 50%;
+  background: rgba(240, 138, 36, 0.05);
+  color: var(--orange);
+  cursor: pointer;
+  transition: background .25s ease, color .25s ease, box-shadow .25s ease, transform .25s ease;
+}
+
+.theme-toggle svg { width: 18px; height: 18px; }
+.theme-toggle .icon-moon { display: none; }
+
+.theme-toggle:hover {
+  background: var(--orange);
+  color: #111;
+  box-shadow: 0 0 16px rgba(240, 138, 36, 0.6);
+  transform: rotate(-12deg);
+}
+
+:root[data-theme="light"] .theme-toggle .icon-sun  { display: none; }
+:root[data-theme="light"] .theme-toggle .icon-moon { display: block; }
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle { transition: none; }
+  .theme-toggle:hover { transform: none; }
+}
+
+/* موبایل: فضای هدر کم است؛ جستجو کوچک‌تر شود تا دکمه جا شود */
+@media (max-width: 760px) {
+  .search-box { width: 150px; }
+  .header-actions { gap: 10px; }
+}
+
+/* =========================================================
+   تم روشن
+   ========================================================= */
+:root[data-theme="dark"]  { color-scheme: dark; }
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --dark: #E3D9C4;                      /* پس‌زمینه صفحه (شنی پلازا) */
+  --text: #2B1D17;
+  --text-muted: #6B5A50;
+  --border: #D6CAB2;
+  --orange: #B8482A;                    /* ترکوتای عمیق: متن/آیکون روی سطح روشن، کنتراست ≈ 4.9 روی کرم */
+  --orange-bright: #E26C4C;
+  --orange-soft: rgba(194, 78, 43, 0.28);
+  --orange-glow: rgba(222, 100, 68, 0.18);
+}
+
+/* ---------- هدر: ترکوتایی مثل هیروی پلازا ---------- */
+:root[data-theme="light"] .site-header {
+  background: linear-gradient(180deg, #C74F2C 0%, #BF4B28 100%);
+  border-bottom: 2px solid #A9411F;
+  box-shadow: 0 6px 18px rgba(90, 40, 20, 0.25);
+}
+:root[data-theme="light"] .site-header::after { display: none; }
+
+:root[data-theme="light"] .site-header .logo-title {
+  background: none;
+  color: #fff;
+}
+:root[data-theme="light"] .site-header .logo-sub { color: #FFE2D6; }
+
+:root[data-theme="light"] .main-nav a {
+  color: #fff;
+}
+:root[data-theme="light"] .main-nav a:hover,
+:root[data-theme="light"] .main-nav a.active {
+  color: #FFF1EA;
+  text-shadow: none;
+}
+:root[data-theme="light"] .main-nav a.active::after {
+  background: #F7F3EA;
+  box-shadow: none;
+}
+
+:root[data-theme="light"] .search-box input {
+  background: #F7F3EA;
+  border: 1px solid transparent;
+  color: var(--text);
+  box-shadow: 0 2px 6px rgba(90, 40, 20, 0.18);
+}
+:root[data-theme="light"] .search-box input::placeholder { color: #7B6A5E; }
+:root[data-theme="light"] .search-box input:focus {
+  border-color: #fff;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.35);
+}
+:root[data-theme="light"] .search-icon { color: #6B5A50; }
+
+/* دکمه‌های کرم‌رنگ با متن ترکوتایی (مثل دکمه‌های هیروی پلازا) */
+:root[data-theme="light"] .btn-phone,
+:root[data-theme="light"] .btn-outline {
+  background: #F7F3EA;
+  border-color: #F7F3EA;
+  color: #A9411F;
+  box-shadow: 0 2px 6px rgba(90, 40, 20, 0.18);
+}
+:root[data-theme="light"] .btn-phone:hover,
+:root[data-theme="light"] .btn-outline:hover {
+  background: #DE6444;
+  border-color: #DE6444;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(90, 40, 20, 0.3);
+}
+
+:root[data-theme="light"] .theme-toggle {
+  background: #F7F3EA;
+  border-color: #F7F3EA;
+  color: #A9411F;
+  box-shadow: 0 2px 6px rgba(90, 40, 20, 0.18);
+}
+:root[data-theme="light"] .theme-toggle:hover {
+  background: #DE6444;
+  border-color: #DE6444;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(90, 40, 20, 0.3);
+}
+
+/* ---------- هیرو: عکس صنعتی با لایه قهوه‌ای گرم ---------- */
+:root[data-theme="light"] .hero {
+  background: #3B2218;
+  border-bottom: 1px solid #A9411F;
+}
+:root[data-theme="light"] .hero-overlay {
+  background: linear-gradient(90deg,
+    rgba(59, 34, 24, 0.15) 0%,
+    rgba(59, 34, 24, 0.62) 55%,
+    rgba(46, 27, 19, 0.92) 100%);
+}
+:root[data-theme="light"] .hero-title {
+  background: none;
+  color: #fff;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.35);
+}
+:root[data-theme="light"] .hero-sub {
+  color: #FFC3AD;
+  text-shadow: none;
+}
+:root[data-theme="light"] .hero-sub::before,
+:root[data-theme="light"] .hero-sub::after {
+  background: #FFC3AD;
+  box-shadow: none;
+}
+:root[data-theme="light"] .hero-text { color: #F6EDE0; }
+
+/* ---------- دسته‌بندی‌ها ---------- */
+:root[data-theme="light"] .cat-card {
+  background: linear-gradient(180deg, #F9F6EE, #EFE8D8);
+  border: 1px solid #D6CAB2;
+  color: var(--text);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85), 0 6px 14px rgba(59, 34, 24, 0.14);
+}
+:root[data-theme="light"] .cat-card:hover {
+  border-color: #DE6444;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85), 0 8px 18px rgba(222, 100, 68, 0.25);
+}
+:root[data-theme="light"] .cat-card.active {
+  border: 1.5px solid #C24E2B;
+  background: linear-gradient(180deg, #FFF6F0, #F8E6DC);
+  box-shadow: 0 0 0 3px rgba(222, 100, 68, 0.2), 0 8px 18px rgba(59, 34, 24, 0.16);
+}
+:root[data-theme="light"] .cat-img { border-radius: 8px; overflow: hidden; }
+
+/* ---------- زیرمنو ---------- */
+:root[data-theme="light"] .sub-nav {
+  background: #EADFC8;
+  border: 1px solid #D2C5AB;
+  box-shadow: 0 8px 22px rgba(59, 34, 24, 0.12);
+}
+:root[data-theme="light"] .sub-nav .sub-item {
+  background: linear-gradient(180deg, #FAF7F0, #F1EADB);
+  border: 1px solid #CFC3AB;
+  color: #3B2A20;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 2px 6px rgba(59, 34, 24, 0.12);
+}
+:root[data-theme="light"] .sub-nav .sub-item::before { background: #9B8B7C; }
+:root[data-theme="light"] .sub-nav .sub-item:hover {
+  background: linear-gradient(180deg, #FFF7F2, #FAE9E0);
+  border-color: #DE6444;
+  color: #A9411F;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 5px 12px rgba(222, 100, 68, 0.22);
+}
+:root[data-theme="light"] .sub-nav .sub-item:hover::before {
+  background: #DE6444;
+  box-shadow: none;
+}
+:root[data-theme="light"] .sub-nav .sub-item.active {
+  background: linear-gradient(180deg, #C9502D, #B8452A);
+  border-color: #A9411F;
+  color: #fff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 4px 12px rgba(194, 78, 43, 0.35);
+}
+:root[data-theme="light"] .sub-nav .sub-item.active::before {
+  background: #fff;
+  box-shadow: none;
+}
+:root[data-theme="light"] .sub-nav .sub-item:focus-visible { outline-color: #C24E2B; }
+
+/* ---------- پنل جدول قیمت ---------- */
+:root[data-theme="light"] .price-panel {
+  background: linear-gradient(180deg, #F9F6EE, #F0E9DA);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 24px rgba(59, 34, 24, 0.12);
+}
+:root[data-theme="light"] .panel-title svg { filter: none; }
+
+:root[data-theme="light"] .btn-download {
+  border-color: #C24E2B;
+  color: #A9411F;
+}
+:root[data-theme="light"] .btn-download:hover {
+  background: #C24E2B;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(194, 78, 43, 0.3);
+}
+
+:root[data-theme="light"] .tabs {
+  background: #E8DFCB;
+  border-color: var(--border);
+}
+:root[data-theme="light"] .tab {
+  background: #EFE8D8;
+  color: var(--text-muted);
+}
+:root[data-theme="light"] .tab:hover {
+  background: #F8F4EA;
+  color: var(--text);
+}
+:root[data-theme="light"] .tab.active {
+  background: linear-gradient(180deg, #C9502D, #B8452A);
+  color: #fff;
+  box-shadow: inset 0 -2px 8px rgba(0, 0, 0, 0.12);
+}
+
+:root[data-theme="light"] .table-wrap { border-color: var(--border); }
+
+:root[data-theme="light"] .price-table thead th {
+  background: rgba(233, 224, 203, 0.88);
+  color: #9E3B1B;
+  border-bottom: 1px solid rgba(194, 78, 43, 0.55);
+  box-shadow: 0 4px 10px rgba(59, 34, 24, 0.1);
+  text-shadow: none;
+}
+:root[data-theme="light"] .price-table td {
+  color: var(--text);
+  border-bottom: 1px solid #E2D8C2;
+}
+:root[data-theme="light"] .price-table tbody tr:nth-child(even) { background: #EEE7D7; }
+:root[data-theme="light"] .price-table tbody tr:nth-child(odd)  { background: #F8F4EB; }
+:root[data-theme="light"] .price-table tbody tr:hover {
+  background: #F6DDD2;
+  box-shadow: none;
+}
+:root[data-theme="light"] .price-table td.price {
+  color: #2B1D17;
+  font-weight: 700;
+}
+:root[data-theme="light"] .empty-cell { color: var(--text-muted); }
+
+/* ---------- پنل ویژگی‌ها ---------- */
+:root[data-theme="light"] .feature-panel {
+  background: linear-gradient(180deg, #F9F6EE, #F0E9DA);
+  border: 1px solid var(--border);
+  box-shadow: 0 6px 18px rgba(59, 34, 24, 0.1);
+}
+:root[data-theme="light"] .feature { border-left-color: #DCD1BA; }
+:root[data-theme="light"] .feature:hover { background: rgba(222, 100, 68, 0.07); }
+:root[data-theme="light"] .feature svg { filter: none; }
+
+@media (max-width: 1000px) {
+  :root[data-theme="light"] .feature { border-bottom-color: #DCD1BA; }
+}
+
+/* ---------- بنر مشاوره: قهوه‌ای عمیق مثل بنر «مشاوره خرید» پلازا ---------- */
+:root[data-theme="light"] .consult-banner {
+  background: #3B2218;
+  border-top: 1px solid #A9411F;
+  border-bottom: 1px solid #A9411F;
+}
+:root[data-theme="light"] .consult-overlay {
+  background: linear-gradient(90deg,
+    rgba(46, 27, 19, 0.96) 25%,
+    rgba(46, 27, 19, 0.5) 70%,
+    rgba(46, 27, 19, 0.35) 100%);
+}
+:root[data-theme="light"] .consult-content h2 {
+  color: #FFB59A;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.5);
+}
+:root[data-theme="light"] .consult-content p { color: #F6EDE0; }
+
+/* ---------- اخبار ---------- */
+:root[data-theme="light"] .section-title::before,
+:root[data-theme="light"] .section-title::after {
+  background: linear-gradient(90deg, transparent, #B9AB91, transparent);
+}
+:root[data-theme="light"] .news-card {
+  background: linear-gradient(180deg, #F9F6EE, #F0E9DA);
+  border: 1px solid var(--border);
+}
+:root[data-theme="light"] .news-card:hover {
+  border-color: #DE6444;
+  box-shadow: 0 8px 20px rgba(59, 34, 24, 0.16), 0 0 0 3px rgba(222, 100, 68, 0.12);
+}
+:root[data-theme="light"] .news-date { color: #A9411F; }
+
+/* ---------- فوتر: قهوه‌ای تیره برای لنگر بصری صفحه ---------- */
+:root[data-theme="light"] .site-footer {
+  background: linear-gradient(180deg, #3B2218, #2A170F);
+  border-top: 2px solid #DE6444;
+}
+:root[data-theme="light"] .site-footer .logo-sub { color: #FFB59A; }
+:root[data-theme="light"] .footer-brand p { color: #D9C9B8; }
+:root[data-theme="light"] .footer-col h4 {
+  color: #FFB59A;
+  text-shadow: none;
+}
+:root[data-theme="light"] .footer-col a,
+:root[data-theme="light"] .footer-col p { color: #D9C9B8; }
+:root[data-theme="light"] .footer-col a:hover { color: #FFB59A; }
+:root[data-theme="light"] .socials a {
+  color: #F2EEE4;
+  border-color: rgba(255, 255, 255, 0.22);
+}
+:root[data-theme="light"] .socials a:hover {
+  color: #FFB59A;
+  border-color: #FFB59A;
+  box-shadow: none;
+}
+:root[data-theme="light"] .footer-bottom {
+  border-top-color: rgba(255, 255, 255, 0.12);
+  color: #BFAE9C;
+}
+:root[data-theme="light"] .footer-bottom a { color: #BFAE9C; }
+:root[data-theme="light"] .footer-bottom a:hover { color: #FFB59A; }
+
+/* ---------- فوکوس کیبورد ---------- */
+:root[data-theme="light"] button:focus-visible,
+:root[data-theme="light"] a:focus-visible,
+:root[data-theme="light"] input:focus-visible {
+  outline-color: #A9411F;
+}
+:root[data-theme="light"] .site-header a:focus-visible,
+:root[data-theme="light"] .site-header button:focus-visible,
+:root[data-theme="light"] .site-header input:focus-visible {
+  outline-color: #fff;
+}
