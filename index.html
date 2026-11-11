@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl" data-theme="light">
+<html lang="fa" dir="rtl" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>اتصالات فولادی</title>
+  <title>STEEL FORM | اتصالات فولادی</title>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
   <!-- اعمال تم ذخیره‌شده قبل از اولین رندر (جلوگیری از پرش رنگ) -->
   <script>
@@ -14,8 +14,22 @@
       } catch (e) {}
     })();
   </script>
+  <!-- اعمال پالت قبل از اولین رندر: پالت انتخابی پایین صفحه، وگرنه در تم تیره Industrial Precision -->
+  <script>
+    (function () {
+      try {
+        var root = document.documentElement;
+        var p = localStorage.getItem('sf-palette');
+        var valid = ['soft','geo','avant','minimal','precision','calm'];
+        if (valid.indexOf(p) !== -1) root.setAttribute('data-palette', p);
+        else if (root.getAttribute('data-theme') !== 'light') root.setAttribute('data-palette', 'precision');
+      } catch (e) {}
+    })();
+  </script>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/tables.css">
+  <link rel="stylesheet" href="css/palettes.css">
 </head>
 <body>
 
@@ -81,44 +95,83 @@
     </div>
   </section>
 
-  <!-- ===== دسته‌بندی‌ها (توسط JS ساخته می‌شود) ===== -->
-  <section class="categories" id="categories"></section>
+  <!-- ===== جدول اول (سه شیت اول اکسل) ===== -->
+  <div class="table-block table-block--first" data-table="table1">
 
-  <!-- ===== زیرمنو (توسط JS ساخته می‌شود) ===== -->
-  <nav class="sub-nav" id="subNav"></nav>
+    <!-- کارت‌های دسته‌بندی (توسط JS ساخته می‌شود) -->
+    <section class="categories" data-role="categories"></section>
 
-  <!-- ===== جدول قیمت + ستون ویژگی‌ها ===== -->
+    <!-- زیرمنو (توسط JS ساخته می‌شود) -->
+    <nav class="sub-nav" data-role="subNav"></nav>
+
+    <!-- جدول قیمت -->
+    <section class="main-grid">
+      <div class="price-panel">
+        <div class="panel-head">
+          <h2 class="panel-title">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V14M10 20V8M16 20V11M22 20H2" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            <span data-role="title"></span>
+          </h2>
+          <button class="btn-download" data-role="download">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            دانلود جدول قیمت
+          </button>
+        </div>
+
+        <div class="tabs" data-role="tabs"></div>
+
+        <div class="table-wrap">
+          <table class="price-table">
+            <thead><tr data-role="priceHead"></tr></thead>
+            <tbody data-role="priceBody"></tbody>
+          </table>
+        </div>
+
+        <!-- یادداشت‌های هر تب (از data/notes.js) -->
+        <div class="table-notes" data-role="notes"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- جداکننده بین دو جدول -->
+  <div class="table-divider" aria-hidden="true"><span></span></div>
+
+  <!-- ===== جدول دوم (سه شیت بعدی اکسل) ===== -->
+  <div class="table-block table-block--second" data-table="table2">
+
+    <section class="categories" data-role="categories"></section>
+
+    <nav class="sub-nav" data-role="subNav"></nav>
+
+    <section class="main-grid">
+      <div class="price-panel">
+        <div class="panel-head">
+          <h2 class="panel-title">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V14M10 20V8M16 20V11M22 20H2" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            <span data-role="title"></span>
+          </h2>
+          <button class="btn-download" data-role="download">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            دانلود جدول قیمت
+          </button>
+        </div>
+
+        <div class="tabs" data-role="tabs"></div>
+
+        <div class="table-wrap">
+          <table class="price-table">
+            <thead><tr data-role="priceHead"></tr></thead>
+            <tbody data-role="priceBody"></tbody>
+          </table>
+        </div>
+
+        <div class="table-notes" data-role="notes"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===== ستون ویژگی‌ها ===== -->
   <section class="main-grid">
-
-    <div class="price-panel">
-      <div class="panel-head">
-        <button class="btn-download" id="downloadBtn">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          دانلود جدول قیمت
-        </button>
-        <h2 class="panel-title">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V14M10 20V8M16 20V11M22 20H2" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-          <span id="panelTitle"></span>
-        </h2>
-      </div>
-
-      <div class="tabs" id="tabs"></div>
-
-      <div class="table-wrap">
-        <table class="price-table">
-          <thead><tr id="priceHead"></tr></thead>
-          <tbody id="priceBody"></tbody>
-        </table>
-      </div>
-      
-      <!-- ===== توضیحات زیر جدول ===== -->
-      <div class="table-notes">
-        <p>- کلیه لوله‌ها دارای مارک می‌باشند</p>
-        <p>- کلیه لوله‌ها دارای پوشش لاکی می‌باشند</p>
-      </div>
-
-    </div>
-
     <aside class="feature-panel">
       <div class="feature">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6l8-3z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.5 12l2.5 2.5 4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -136,7 +189,6 @@
         <p>پیش از خرید و انتخاب</p>
       </div>
     </aside>
-
   </section>
 
   <!-- ===== بنر مشاوره ===== -->
@@ -183,6 +235,36 @@
       </article>
     </div>
   </section>
+
+  <!-- ===== انتخاب پالت رنگی ===== -->
+  <div class="palette-bar" role="group" aria-label="انتخاب پالت رنگی">
+    <div class="palette-bar-title">پالت رنگی سایت</div>
+    <button type="button" class="palette-btn" data-palette-btn="default" aria-pressed="true">پیش‌فرض</button>
+    <button type="button" class="palette-btn" data-palette-btn="soft" aria-pressed="false">
+      <span class="palette-swatch"><i style="background:#776657"></i><i style="background:#C78670"></i><i style="background:#A3B5A5"></i></span>
+      Soft Industrial
+    </button>
+    <button type="button" class="palette-btn" data-palette-btn="geo" aria-pressed="false">
+      <span class="palette-swatch"><i style="background:#31558B"></i><i style="background:#B84F3D"></i><i style="background:#D5A63B"></i></span>
+      Geometric Steel
+    </button>
+    <button type="button" class="palette-btn" data-palette-btn="avant" aria-pressed="false">
+      <span class="palette-swatch"><i style="background:#202329"></i><i style="background:#FF5A1F"></i><i style="background:#D5FF35"></i></span>
+      Industrial Avant-Garde
+    </button>
+    <button type="button" class="palette-btn" data-palette-btn="minimal" aria-pressed="false">
+      <span class="palette-swatch"><i style="background:#25282C"></i><i style="background:#B66D43"></i><i style="background:#858A90"></i></span>
+      Minimal Industrial
+    </button>
+    <button type="button" class="palette-btn" data-palette-btn="precision" aria-pressed="false">
+      <span class="palette-swatch"><i style="background:#1B2940"></i><i style="background:#FF9B45"></i><i style="background:#25C4B0"></i></span>
+      Industrial Precision
+    </button>
+    <button type="button" class="palette-btn" data-palette-btn="calm" aria-pressed="false">
+      <span class="palette-swatch"><i style="background:#285C5A"></i><i style="background:#668A9B"></i><i style="background:#9CB9A9"></i></span>
+      Calm Engineering
+    </button>
+  </div>
 
   <!-- ===== فوتر ===== -->
   <footer class="site-footer">
@@ -239,8 +321,10 @@
 
   <!-- داده و منطق: ترتیب مهم است -->
   <script src="data/catalog.js"></script>
+  <script src="data/notes.js"></script>
   <script src="js/app.js"></script>
   <script src="js/theme.js"></script>
+  <script src="js/palette.js"></script>
 
 </body>
 </html>

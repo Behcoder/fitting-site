@@ -1,0 +1,62 @@
+/* =========================================================
+   css/tables.css — چیدمان دو بلوک جدول
+   فقط جداکننده و فاصله بلوک دوم را اضافه می‌کند؛
+   ظاهر خود جدول‌ها از style.css و theme.css می‌آید.
+   ========================================================= */
+
+/* بلوک دوم: کارت‌های دسته‌بندی‌اش از بالای خودش شروع شود،
+   نه روی جدول اول (کارت‌های بلوک اول عمداً روی هیرو می‌افتند) */
+.table-block--second .categories {
+  margin-top: 28px;
+}
+
+/* کارت‌های دسته‌بندی: بزرگ‌تر، عریض‌تر، فاصله بیشتر و وسط‌چین (هر دو جدول) */
+.table-block .categories {
+  grid-template-columns: repeat(auto-fit, minmax(170px, 200px));
+  justify-content: center;
+  gap: 22px;
+  padding: 0 40px;
+}
+
+.table-block .cat-card {
+  width: 100%;
+  min-height: 150px;
+  padding: 20px 14px 16px;
+  justify-content: center;
+  text-align: center;
+}
+
+.table-block .cat-img {
+  height: 90px;
+}
+
+/* جداکننده بین دو جدول */
+.table-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 1280px;
+  margin: 40px auto 0;
+  padding: 0 24px;
+}
+
+.table-divider::before,
+.table-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--orange), transparent);
+  opacity: 0.6;
+}
+
+.table-divider span {
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  border: 1.5px solid var(--orange);
+  transform: rotate(45deg);
+}
+
+@media (max-width: 600px) {
+  .table-divider { margin-top: 28px; }
+}

@@ -1,6 +1,8 @@
 // ============================================================
-// js/theme.js — تغییر تم تیره/روشن
+// js/theme.js — تغییر تم تیره/روشن با دکمه بالای صفحه
 // تم اولیه را اسکریپت inline داخل <head> اعمال می‌کند؛ این فایل فقط دکمه را به‌کار می‌اندازد.
+// کلیک روی این دکمه در اولویت است: انتخاب پالت پایین صفحه پاک می‌شود (پیش‌فرض)
+// و به js/palette.js با رویداد sf:theme-change خبر داده می‌شود.
 // ============================================================
 (function () {
   var KEY = 'sf-theme';
@@ -25,6 +27,7 @@
     var next = current() === 'light' ? 'dark' : 'light';
     apply(next);
     try { localStorage.setItem(KEY, next); } catch (e) {}
+    document.dispatchEvent(new CustomEvent('sf:theme-change', { detail: next }));
   });
 
   apply(current());
